@@ -2,7 +2,11 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+lyd.c
+
 Motor.c
 
 main.c
+
+uart.c
 

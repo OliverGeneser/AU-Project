@@ -8,6 +8,6 @@
 
 //Functions
 void initMotor();
-void setSpeed(unsigned char speed,unsigned char smoothingFactor);
+void setSpeed(unsigned char speed, bool smooth);
 void switchDirection();
 void testMotor();
