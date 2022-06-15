@@ -21,6 +21,8 @@ unsigned char newSpeed = 0;
 // functions for initialization of the interrupts and I/O port B
 void initMotor()
 {
+	DDRB = 0xFF;
+	
 	sei();
 	TIMSK3 |= 0b00000000; // no interrupts
 	TCCR3A = 0b00000000;  // normal mode
@@ -89,7 +91,6 @@ void switchDirection()
 void testMotor()
 {
 	DDRA = 0;
-	DDRB = 0xFF;
 	PORTB = 0;
 
 	while (1)

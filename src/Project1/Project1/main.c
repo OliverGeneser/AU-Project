@@ -23,9 +23,6 @@ unsigned char triggers = 0;
 // ISR on INT0
 ISR(INT0_vect)
 {
-	// disable the two ISR for checking the reflex hardware
-	EIMSK |= 0b00000000;
-
 	// increments the current map number
 	triggers++;
 
@@ -33,6 +30,7 @@ ISR(INT0_vect)
 	switch (triggers)
 	{
 	case 0:
+playTune(2);
 		break;
 	case 1:
 		playTune(2);
@@ -50,33 +48,50 @@ ISR(INT0_vect)
 		setSpeed(100, false);
 		setSpeed(255, true);
 		break;
+	case 5:
+		playTune(2);
+		break;
 	case 6:
 		playTune(2);
-		changeToBreakingLight(65535);
-		setSpeed(0, false);
-		changeToBreakingLight(10000);
-		_delay_ms(5000);
 		switchDirection();
+		changeToBreakingLight(65535);
+		setSpeed(30, false);
+		
 		setSpeed(200, true);
+		changeToBreakingLight(10000);
+		
+		break;
+	case 7:
+		playTune(2);
 		break;
 	case 8:
 		playTune(2);
-		changeToBreakingLight(65535);
-		setSpeed(0, false);
-		changeToBreakingLight(10000);
-		_delay_ms(5000);
 		switchDirection();
+		changeToBreakingLight(65535);
+		setSpeed(030, false);
+	
+		
+		
 		setSpeed(180, true);
+		changeToBreakingLight(10000);
+		break;
+		case 9:
+		playTune(2);
+		break;
+		case 10:
+		playTune(2);
 		break;
 	case 11:
 		playTune(3);
 		setSpeed(0, false);
 		turnOffLight();
 		break;
-	}
-
+	
+	default:
+		break;
+}
 	// waits to avoid double triggers from left/right
-	_delay_ms(1000);
+	_delay_ms(250);
 	EIFR = 0xFF;
 	EIMSK |= 0b00000011;
 }
@@ -84,54 +99,72 @@ ISR(INT0_vect)
 // ISR on INT1
 ISR(INT1_vect)
 {
-	EIMSK |= 0b00000000;
-
 	triggers++;
-	switch (triggers)
-	{
-	case 0:
-		break;
-	case 1:
-		playTune(2);
-		break;
-	case 2:
-		playTune(2);
-		setSpeed(255, false);
-		break;
-	case 3:
-		playTune(2);
-		setSpeed(10, false);
-		break;
-	case 4:
-		playTune(2);
-		setSpeed(100, false);
-		setSpeed(255, true);
-		break;
-	case 6:
-		playTune(2);
-		changeToBreakingLight(65535);
-		setSpeed(0, false);
-		changeToBreakingLight(10000);
-		_delay_ms(5000);
-		switchDirection();
-		setSpeed(200, true);
-		break;
-	case 8:
-		playTune(2);
-		changeToBreakingLight(65535);
-		setSpeed(0, false);
-		changeToBreakingLight(10000);
-		_delay_ms(5000);
-		switchDirection();
-		setSpeed(180, true);
-		break;
-	case 11:
-		playTune(3);
-		setSpeed(0, false);
-		turnOffLight();
-		break;
-	}
-	_delay_ms(1000);
+	
+		switch (triggers)
+		{
+			case 0:
+			playTune(2);
+			break;
+			case 1:
+			playTune(2);
+			break;
+			case 2:
+			playTune(2);
+			setSpeed(255, false);
+			break;
+			case 3:
+			playTune(2);
+			setSpeed(10, false);
+			break;
+			case 4:
+			playTune(2);
+			setSpeed(100, false);
+			setSpeed(255, true);
+			break;
+			case 5:
+			playTune(2);
+			break;
+			case 6:
+			playTune(2);
+			switchDirection();
+			changeToBreakingLight(65535);
+			setSpeed(30, false);
+			
+			setSpeed(200, true);
+			changeToBreakingLight(10000);
+			
+			break;
+			case 7:
+			playTune(2);
+			break;
+			case 8:
+			playTune(2);
+			switchDirection();
+			changeToBreakingLight(65535);
+			setSpeed(030, false);
+			
+			
+			
+			setSpeed(180, true);
+			changeToBreakingLight(10000);
+			break;
+			case 9:
+			playTune(2);
+			break;
+			case 10:
+			playTune(2);
+			break;
+			case 11:
+			playTune(3);
+			setSpeed(0, false);
+			turnOffLight();
+			break;
+			
+			default:
+			break;
+		}
+	_delay_ms(250);
 
 	EIFR = 0xFF;
 	EIMSK |= 0b00000011;
@@ -147,18 +180,22 @@ int main(void)
 	DDRB = 0xFF;
 	DDRA = 0;
 
+	EICRA = 0b00001111;
+
 	setVolume(30);
 
+	triggers = 0;
 	while (1)
 	{
 		if (~PINA & (1 << 0))
 		{
+			EIMSK |= 0b00000011;
 			// starts the car by playing the start sound and starting the lights
-			playTune(1);
 			turnOnLight();
+			playTune(1);
+			_delay_ms(2000);
 			setSpeed(50, false);
 			setSpeed(255, true);
-			EICRA = 0b00001111;
 		}
 	}
 }

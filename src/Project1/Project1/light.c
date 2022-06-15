@@ -12,28 +12,28 @@
 
 void lightInitiate()
 {
-	DDRE = 0b00011000; //PE4 og PE3 sættes som output
-	TCCR3B |= 1; //Ingen prescale
-	TCCR3A |= 0b11; //PWM MODE 3
-	TCCR3A |= 0b10100000; 
-	TCCR3A &= 0b10101111; //Slukket imens timeren kører op og slukket imens den kører ned
+	DDRH = 0xFF; //PH3 og PH4 sættes som output
+	TCCR4B |= 1; //Ingen prescale
+	TCCR4A |= 0b11; //PWM MODE 3
+	TCCR4A |= 0b10100000; 
+	TCCR4A &= 0b10101111; //Slukket imens timeren kører op og slukket imens den kører ned
 
-	OCR3A = 0; //Slukket
-	OCR3B = 0; //Slukket
+	OCR4A = 0; //Slukket
+	OCR4A = 0; //Slukket
 }
 
 void turnOnLight() {
-	OCR3A = 500; //Timer til forlys (pin 5)
-	OCR3B = 50000; //Timer til baglys (pin 2)
+	OCR4A = 500; //Timer til forlys (pin 5)
+	OCR4B = 50000; //Timer til baglys (pin 2)
 }
 
 void turnOffLight() {
-	OCR3A = 0; //Sluk
-	OCR3B = 0; //Sluk
+	OCR4A = 0; //Sluk
+	OCR4B = 0; //Sluk
 }
 void changeToBreakingLight(int intensity) {
 	//Tjek om intensiteten ligger i et lovligt interval
 	if(intensity >= 0 && intensity <= MAX) { 
-		OCR3B = intensity; //Sæt lysstyrken på baglyset til den givne parameter
+		OCR4B = intensity; //Sæt lysstyrken på baglyset til den givne parameter
 	}
 }

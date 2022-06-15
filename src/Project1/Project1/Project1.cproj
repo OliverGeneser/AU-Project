@@ -122,6 +122,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="light.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="light.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lyd.c">
       <SubType>compile</SubType>
     </Compile>
