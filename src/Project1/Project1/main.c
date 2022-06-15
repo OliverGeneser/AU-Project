@@ -27,71 +27,75 @@ ISR(INT0_vect)
 	triggers++;
 
 	// switch for controlling the car in relation to the current reflex
-	switch (triggers)
-	{
+switch (triggers)
+{
 	case 0:
-playTune(2);
-		break;
+	playTune(2);
+	break;
 	case 1:
-		playTune(2);
-		break;
+	playTune(2);
+	break;
 	case 2:
-		playTune(2);
-		setSpeed(255, false);
-		break;
+	playTune(2);
+	setSpeed(255, false);
+	break;
 	case 3:
-		playTune(2);
-		setSpeed(10, false);
-		break;
+	playTune(2);
+	setSpeed(50, false);
+	break;
 	case 4:
-		playTune(2);
-		setSpeed(100, false);
-		setSpeed(255, true);
-		break;
+	playTune(2);
+	setSpeed(150, false);
+	setSpeed(255, true);
+	break;
 	case 5:
-		playTune(2);
-		break;
+	playTune(2);
+	break;
 	case 6:
-		playTune(2);
-		switchDirection();
-		changeToBreakingLight(65535);
-		setSpeed(30, false);
-		
-		setSpeed(200, true);
-		changeToBreakingLight(10000);
-		
-		break;
-	case 7:
-		playTune(2);
-		break;
-	case 8:
-		playTune(2);
-		switchDirection();
-		changeToBreakingLight(65535);
-		setSpeed(030, false);
+	playTune(2);
+	switchDirection();
+	changeToBreakingLight(65535);
+	setSpeed(5, false);
 	
-		
-		
-		setSpeed(180, true);
-		changeToBreakingLight(10000);
-		break;
-		case 9:
-		playTune(2);
-		break;
-		case 10:
-		playTune(2);
-		break;
+	setSpeed(255, true);
+	changeToBreakingLight(10000);
+	
+	break;
+	case 7:
+	playTune(2);
+	break;
+	case 8:
+	playTune(2);
+	switchDirection();
+	changeToBreakingLight(65535);
+	setSpeed(5, false);
+	
+	
+	
+	setSpeed(255, true);
+	changeToBreakingLight(10000);
+	break;
+	case 9:
+	playTune(2);
+	break;
+	case 10:
+	playTune(2);
+	break;
 	case 11:
-		playTune(3);
-		setSpeed(0, false);
-		turnOffLight();
-		break;
+	playTune(3);
+	setSpeed(0, false);
+	switchDirection();
+	setSpeed(10,false);
+	setSpeed(0,false);
+	_delay_ms(5000);
+	turnOffLight();
+	break;
 	
 	default:
-		break;
+	break;
 }
 	// waits to avoid double triggers from left/right
-	_delay_ms(250);
+	_delay_ms(300);
 	EIFR = 0xFF;
 	EIMSK |= 0b00000011;
 }
@@ -101,70 +105,74 @@ ISR(INT1_vect)
 {
 	triggers++;
 	
-		switch (triggers)
-		{
-			case 0:
-			playTune(2);
-			break;
-			case 1:
-			playTune(2);
-			break;
-			case 2:
-			playTune(2);
-			setSpeed(255, false);
-			break;
-			case 3:
-			playTune(2);
-			setSpeed(10, false);
-			break;
-			case 4:
-			playTune(2);
-			setSpeed(100, false);
-			setSpeed(255, true);
-			break;
-			case 5:
-			playTune(2);
-			break;
-			case 6:
-			playTune(2);
-			switchDirection();
-			changeToBreakingLight(65535);
-			setSpeed(30, false);
-			
-			setSpeed(200, true);
-			changeToBreakingLight(10000);
-			
-			break;
-			case 7:
-			playTune(2);
-			break;
-			case 8:
-			playTune(2);
-			switchDirection();
-			changeToBreakingLight(65535);
-			setSpeed(030, false);
-			
-			
-			
-			setSpeed(180, true);
-			changeToBreakingLight(10000);
-			break;
-			case 9:
-			playTune(2);
-			break;
-			case 10:
-			playTune(2);
-			break;
-			case 11:
-			playTune(3);
-			setSpeed(0, false);
-			turnOffLight();
-			break;
-			
-			default:
-			break;
-		}
-	_delay_ms(250);
+	switch (triggers)
+	{
+		case 0:
+		playTune(2);
+		break;
+		case 1:
+		playTune(2);
+		break;
+		case 2:
+		playTune(2);
+		setSpeed(255, false);
+		break;
+		case 3:
+		playTune(2);
+		setSpeed(50, false);
+		break;
+		case 4:
+		playTune(2);
+		setSpeed(150, false);
+		setSpeed(255, true);
+		break;
+		case 5:
+		playTune(2);
+		break;
+		case 6:
+		playTune(2);
+		switchDirection();
+		changeToBreakingLight(65535);
+		setSpeed(5, false);
+		
+		setSpeed(255, true);
+		changeToBreakingLight(10000);
+		
+		break;
+		case 7:
+		playTune(2);
+		break;
+		case 8:
+		playTune(2);
+		switchDirection();
+		changeToBreakingLight(65535);
+		setSpeed(5, false);
+		
+		
+		
+		setSpeed(255, true);
+		changeToBreakingLight(10000);
+		break;
+		case 9:
+		playTune(2);
+		break;
+		case 10:
+		playTune(2);
+		break;
+		case 11:
+		playTune(3);
+		setSpeed(0, false);
+		switchDirection();
+		setSpeed(10,false);
+		setSpeed(0,false);
+		_delay_ms(5000);
+		turnOffLight();
+		break;
+		
+		default:
+		break;
+	}
+	_delay_ms(300);
 
 	EIFR = 0xFF;
 	EIMSK |= 0b00000011;
@@ -184,16 +192,17 @@ int main(void)
 
 	setVolume(30);
 
-	triggers = 0;
+	
 	while (1)
 	{
 		if (~PINA & (1 << 0))
 		{
+			triggers = 0;
 			EIMSK |= 0b00000011;
 			// starts the car by playing the start sound and starting the lights
 			turnOnLight();
 			playTune(1);
-			_delay_ms(2000);
+			_delay_ms(4221);
 			setSpeed(50, false);
 			setSpeed(255, true);
 		}
