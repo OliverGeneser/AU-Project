@@ -283,7 +283,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x750
+.text           0x00000000      0x75a
  *(.vectors)
  .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -442,29 +442,29 @@ END GROUP
                 0x00000358        0xe Motor.o
                 0x00000358                switchDirection
  .text.__vector_1
-                0x00000366      0x142 main.o
+                0x00000366      0x146 main.o
                 0x00000366                __vector_1
  .text.__vector_2
-                0x000004a8      0x142 main.o
-                0x000004a8                __vector_2
- .text.main     0x000005ea       0x4c main.o
-                0x000005ea                main
+                0x000004ac      0x146 main.o
+                0x000004ac                __vector_2
+ .text.main     0x000005f2       0x4e main.o
+                0x000005f2                main
  .text.InitUART
-                0x00000636       0xb4 uart.o
-                0x00000636                InitUART
+                0x00000640       0xb4 uart.o
+                0x00000640                InitUART
  .text.SendChar
-                0x000006ea        0xe uart.o
-                0x000006ea                SendChar
+                0x000006f4        0xe uart.o
+                0x000006f4                SendChar
  .text.libgcc.div
-                0x000006f8       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
-                0x000006f8                __udivmodsi4
- .text.libgcc   0x0000073c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x0000073c                __tablejump2__
-                0x0000074c                . = ALIGN (0x2)
+                0x00000702       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
+                0x00000702                __udivmodsi4
+ .text.libgcc   0x00000746       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x00000746                __tablejump2__
+                0x00000756                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000074c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x0000074c                _exit
-                0x0000074c                exit
+ .fini9         0x00000756        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x00000756                _exit
+                0x00000756                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -483,11 +483,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000074c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x00000756        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000750                _etext = .
+                0x0000075a                _etext = .
 
-.data           0x00800200        0x0 load address 0x00000750
+.data           0x00800200        0x0 load address 0x0000075a
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -529,8 +529,8 @@ END GROUP
                 0x00800208                checkSum1
                 0x00800209                checkSum2
                 0x0080020a                PROVIDE (__bss_end, .)
-                0x00000750                __data_load_start = LOADADDR (.data)
-                0x00000750                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000075a                __data_load_start = LOADADDR (.data)
+                0x0000075a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080020a        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -621,14 +621,14 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1bc4
+.debug_info     0x00000000     0x1bc6
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_info    0x00000bbc       0xe0 light.o
  .debug_info    0x00000c9c      0x268 lyd.o
  .debug_info    0x00000f04      0x202 Motor.o
- .debug_info    0x00001106      0x834 main.o
- .debug_info    0x0000193a      0x28a uart.o
+ .debug_info    0x00001106      0x836 main.o
+ .debug_info    0x0000193c      0x28a uart.o
 
 .debug_abbrev   0x00000000     0x1010
  *(.debug_abbrev)
@@ -639,14 +639,14 @@ END GROUP
  .debug_abbrev  0x00000d49      0x12c main.o
  .debug_abbrev  0x00000e75      0x19b uart.o
 
-.debug_line     0x00000000      0xbdd
+.debug_line     0x00000000      0xbef
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1fa C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_line    0x000001fa      0x11a light.o
  .debug_line    0x00000314      0x134 lyd.o
  .debug_line    0x00000448      0x1f3 Motor.o
- .debug_line    0x0000063b      0x406 main.o
- .debug_line    0x00000a41      0x19c uart.o
+ .debug_line    0x0000063b      0x418 main.o
+ .debug_line    0x00000a53      0x19c uart.o
 
 .debug_frame    0x00000000      0x2d0
  *(.debug_frame)

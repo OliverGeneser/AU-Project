@@ -23,7 +23,7 @@ unsigned char triggers = 0;
 // ISR on INT0
 ISR(INT0_vect)
 {
-	EIMSK |= 0b00000000;
+	EIMSK &= 0b00000000;
 
 	// increments the current map number
 	triggers++;
@@ -31,6 +31,9 @@ ISR(INT0_vect)
 	// switch for controlling the car in relation to the current reflex
 	switch (triggers)
 	{
+	case 0:
+		playTune(2);
+		break;
 	case 1:
 		playTune(2);
 		break;
@@ -81,7 +84,7 @@ ISR(INT0_vect)
 		switchDirection();
 		setSpeed(10, false);
 		setSpeed(0, false);
-		_delay_ms(5000);
+		_delay_ms(500);
 		turnOffLight();
 		break;
 	default:
@@ -89,8 +92,84 @@ ISR(INT0_vect)
 	}
 	// waits to avoid double triggers from left/right
 	_delay_ms(300);
+	EIFR = 0xFF;
+	EIMSK |= 0b00000011;
+}
 
-	EIMSK |= 0b00000001;
+// ISR on INT1
+ISR(INT1_vect)
+{
+	EIMSK &= 0b00000000;
+
+	// increments the current map number
+	triggers++;
+
+	// switch for controlling the car in relation to the current reflex
+	switch (triggers)
+	{
+		case 0:
+		playTune(2);
+		break;
+		case 1:
+		playTune(2);
+		break;
+		case 2:
+		playTune(2);
+		setSpeed(255, false);
+		break;
+		case 3:
+		playTune(2);
+		setSpeed(50, false);
+		break;
+		case 4:
+		playTune(2);
+		setSpeed(150, false);
+		setSpeed(255, true);
+		break;
+		case 5:
+		playTune(2);
+		break;
+		case 6:
+		playTune(2);
+		switchDirection();
+		changeToBreakingLight(65535);
+		setSpeed(5, false);
+		setSpeed(255, true);
+		changeToBreakingLight(10000);
+		break;
+		case 7:
+		playTune(2);
+		break;
+		case 8:
+		playTune(2);
+		switchDirection();
+		changeToBreakingLight(65535);
+		setSpeed(5, false);
+		setSpeed(255, true);
+		changeToBreakingLight(10000);
+		break;
+		case 9:
+		playTune(2);
+		break;
+		case 10:
+		playTune(2);
+		break;
+		case 11:
+		playTune(3);
+		setSpeed(0, false);
+		switchDirection();
+		setSpeed(10, false);
+		setSpeed(0, false);
+		_delay_ms(500);
+		turnOffLight();
+		break;
+		default:
+		break;
+	}
+	// waits to avoid double triggers from left/right
+	_delay_ms(300);
+	EIFR = 0xFF;
+	EIMSK |= 0b00000011;
 }
 
 int main(void)
@@ -102,9 +181,10 @@ int main(void)
 	lightInitiate();
 	DDRB = 0xFF;
 	DDRA = 0;
+	DDRD = 0;
 
 	// sets rising edge on INT0
-	EICRA = 0b00000011;
+	EICRA = 0b00001111;
 
 	// sets volume
 	setVolume(30);
@@ -116,8 +196,8 @@ int main(void)
 			// set current number of triggers form reflexs
 			triggers = 0;
 
-			// starts interupt INT0
-			EIMSK |= 0b00000001;
+			// starts interupt INT0 and INT1
+			EIMSK |= 0b00000011;
 
 			// starts the car by playing the start sound and starting the lights
 			turnOnLight();
