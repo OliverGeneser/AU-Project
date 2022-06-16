@@ -69,7 +69,7 @@ ISR(INT0_vect)
 		switchDirection();
 		changeToBreakingLight(65535);
 		setSpeed(5, false);
-		setSpeed(255, true);
+		setSpeed(200, true);
 		changeToBreakingLight(10000);
 		break;
 	case 9:
@@ -82,7 +82,7 @@ ISR(INT0_vect)
 		playTune(3);
 		setSpeed(0, false);
 		switchDirection();
-		setSpeed(10, false);
+		setSpeed(20, false);
 		setSpeed(0, false);
 		_delay_ms(500);
 		turnOffLight();
@@ -145,7 +145,7 @@ ISR(INT1_vect)
 		switchDirection();
 		changeToBreakingLight(65535);
 		setSpeed(5, false);
-		setSpeed(255, true);
+		setSpeed(200, true);
 		changeToBreakingLight(10000);
 		break;
 		case 9:
@@ -158,7 +158,7 @@ ISR(INT1_vect)
 		playTune(3);
 		setSpeed(0, false);
 		switchDirection();
-		setSpeed(10, false);
+		setSpeed(20, false);
 		setSpeed(0, false);
 		_delay_ms(500);
 		turnOffLight();

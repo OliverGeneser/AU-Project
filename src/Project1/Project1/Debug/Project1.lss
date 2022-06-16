@@ -738,13 +738,13 @@ ISR(INT0_vect)
  418:	8f ef       	ldi	r24, 0xFF	; 255
  41a:	9f ef       	ldi	r25, 0xFF	; 255
  41c:	cb de       	rcall	.-618    	; 0x1b4 <changeToBreakingLight>
-		setSpeed(255, true);
+		setSpeed(200, true);
  41e:	60 e0       	ldi	r22, 0x00	; 0
  420:	85 e0       	ldi	r24, 0x05	; 5
  422:	90 df       	rcall	.-224    	; 0x344 <setSpeed>
 		changeToBreakingLight(10000);
  424:	61 e0       	ldi	r22, 0x01	; 1
- 426:	8f ef       	ldi	r24, 0xFF	; 255
+ 426:	88 ec       	ldi	r24, 0xC8	; 200
  428:	8d df       	rcall	.-230    	; 0x344 <setSpeed>
  42a:	80 e1       	ldi	r24, 0x10	; 16
 		break;
@@ -774,8 +774,8 @@ ISR(INT0_vect)
  448:	87 df       	rcall	.-242    	; 0x358 <switchDirection>
 		switchDirection();
  44a:	60 e0       	ldi	r22, 0x00	; 0
- 44c:	8a e0       	ldi	r24, 0x0A	; 10
-		setSpeed(10, false);
+ 44c:	84 e1       	ldi	r24, 0x14	; 20
+		setSpeed(20, false);
  44e:	7a df       	rcall	.-268    	; 0x344 <setSpeed>
  450:	60 e0       	ldi	r22, 0x00	; 0
  452:	80 e0       	ldi	r24, 0x00	; 0
@@ -982,13 +982,13 @@ ISR(INT1_vect)
  55e:	8f ef       	ldi	r24, 0xFF	; 255
  560:	9f ef       	ldi	r25, 0xFF	; 255
  562:	28 de       	rcall	.-944    	; 0x1b4 <changeToBreakingLight>
-		setSpeed(255, true);
+		setSpeed(200, true);
  564:	60 e0       	ldi	r22, 0x00	; 0
  566:	85 e0       	ldi	r24, 0x05	; 5
  568:	ed de       	rcall	.-550    	; 0x344 <setSpeed>
 		changeToBreakingLight(10000);
  56a:	61 e0       	ldi	r22, 0x01	; 1
- 56c:	8f ef       	ldi	r24, 0xFF	; 255
+ 56c:	88 ec       	ldi	r24, 0xC8	; 200
  56e:	ea de       	rcall	.-556    	; 0x344 <setSpeed>
  570:	80 e1       	ldi	r24, 0x10	; 16
 		break;
@@ -1018,8 +1018,8 @@ ISR(INT1_vect)
  58e:	e4 de       	rcall	.-568    	; 0x358 <switchDirection>
 		switchDirection();
  590:	60 e0       	ldi	r22, 0x00	; 0
- 592:	8a e0       	ldi	r24, 0x0A	; 10
-		setSpeed(10, false);
+ 592:	84 e1       	ldi	r24, 0x14	; 20
+		setSpeed(20, false);
  594:	d7 de       	rcall	.-594    	; 0x344 <setSpeed>
  596:	60 e0       	ldi	r22, 0x00	; 0
  598:	80 e0       	ldi	r24, 0x00	; 0
